@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+
+<body>
+    <script src="./promise.js"></script>
+    <script>
+        const p1 = Promise.resolve(1)
+        const p2 = Promise.resolve(Promise.resolve(2))
+        const p3 = Promise.resolve(Promise.reject(3))
+        const p4 = Promise.reject(4)
+        p1.then(value => { console.log(value) })
+        p2.then(value => { console.log(value) })
+        p3.catch(reason => { console.log(reason) })
+        p4.catch(reason => { console.log(reason) })
+    </script>
+</body>
+
+</html>
