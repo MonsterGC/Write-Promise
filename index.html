@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+
+<body>
+    <script src="./promise.js"></script>
+    <script>
+        const p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject(1);
+                // 验证异步执行
+                console.log("resolve准备执行")
+            }, 100)
+        }).then(
+            value => {
+                console.log("resolved1:", value)
+            },
+            reason => {
+                console.log("reject1:", reason)
+                return new Promise((resolve, reject) => {
+                    reject("五");
+                })
+            }
+        ).then(
+            value => {
+                console.log("resolved2:", value)
+            },
+            reason => {
+                console.log("reject2:", reason)
+            }
+        )
+    </script>
+</body>
+
+</html>
