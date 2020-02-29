@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+
+<body>
+    <script src="./promise.js"></script>
+    <script>
+        const p1 = Promise.resolve(1)
+        const p2 = Promise.resolve(Promise.resolve(2))
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(5);
+            }, 1000)
+        })
+        Promise.all([p3, p1, p2]).then(value => {
+            console.log(value)
+        })
+
+        Promise.race([p3, p1, p2]).then(
+            value => {
+                console.log(value)
+            }
+        )
+    </script>
+</body>
+
+</html>
